@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bebek Verileri</title>
+</head>
+<body>
+    <h1>Bebek Verileri</h1>
+    <table border="1">
+        <tr>
+            <th>Zaman</th>
+            <th>Hava Kalitesi</th>
+            <th>Sıcaklık (°C)</th>
+            <th>Nem (%)</th>
+            <th>Yağmur</th>
+            <th>Ses Seviyesi (dB)</th>
+        </tr>
+        {% for data in sensor_data %}
+        <tr>
+            <td>{{ data.timestamp }}</td>
+            <td>{{ data.air_quality }}</td>
+            <td>{{ data.temperature }}</td>
+            <td>{{ data.humidity }}</td>
+            <td>{{ data.heart_rate }}</td>
+            <td>{{ data.spo2 }}</td>
+            <td>{{ data.rain_detected|yesno:"Evet,Hayır" }}</td>
+            <td>{{ data.sound_level }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .parent-info {
+        margin-top:  20px;
+    }
+    
+    .parent-detail {
+        background-color: #FFC0CB; /* Arka plan rengi */
+        padding: 5px 10px; /* İç boşluk */
+        border-radius: 5px; /* Kenarları yuvarlatır */
+        font-size: 30px; /* Yazı boyutu */
+        color: #333; /* Yazı rengi */}
+
+        /* static/css/styles.css */
+        .custom-btn {
+            background-color: #007bff; /* Mavi renk */
+            color: #fff; /* Beyaz renk */
+            padding: 10px 20px; /* İç boşluk */
+            font-size: 16px; /* Yazı boyutu */
+            border: none; /* Kenarlık olmadan */
+            border-radius: 5px; /* Kenar yuvarlatma */
+        }
+        
+        .custom-btn:hover {
+            background-color: #0056b3; /* Hover durumunda daha koyu mavi renk */
+        }
+        .h1{
+            color:#007bff;
+        }
+        
+       
+    
+</style>
+</head>
+<body>
+    <h1 class="h1">Ebeveyn Detayları</h1>
+    
+            
+       
+
+       
+
+   
+  <ul>
+    {% for baby in parent.babies.all %}
+        {% if baby.id == parent.id %}
+        
+        <div class="parent-info">
+            <span class="parent-detail">Ebeveyn bilgileri: {{ parent.ebeveyn_bilgi }}</span>
+            <span class="parent-detail">Email: {{ parent.ebeveyn_iletisim }}</span>
+        </div>
+            
+        {% endif %}
+    {% endfor %}
+
+    
+  </ul>
+
+  <button class="custom-btn" type="submit">Mesaj Bırak</button>
+
+</body>
+</html>

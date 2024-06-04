@@ -1,0 +1,10 @@
+{% load static%}
+<div class="card">
+    <img src="{% static 'img/' %}{{ bebek.resim }}" alt="{{ bebek.bebek_adi }}" class="card-img-top" alt="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{bebek.bebek_adi}}</h5>
+      <p class="card-text">{{bebek.aciklama}}</p>
+      
+      <a href="{%url 'details' bebek.id %}" class="btn btn-primary">details</a>
+    </div>
+  </div>
