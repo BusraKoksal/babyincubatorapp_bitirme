@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 
 MIDDLEWARE = [
@@ -138,11 +139,11 @@ STATICFILES_DIRS = [
 
 # Static dosyaları toplamak için root dizini
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    # Diğer statik dosya dizinleri
-]
+     #Diğer statik dosya dizinleri
+                    ]
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -154,3 +155,14 @@ DEBUG = True  # Geliştirme aşamasında olduğumuzdan emin olalım
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend'
+    
+)
+
+
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/account/login/'
+#MQTT_BROKER_ADDRESS = 'mqtt://192.168.187.163'  # MQTT broker adresi
+#MQTT_BROKER_PORT = 1883

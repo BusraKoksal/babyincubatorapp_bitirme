@@ -4,10 +4,10 @@ from django.urls import reverse
 from .models import sensorData
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
+#from django.http import HttpResponse, JsonResponse
 from django.utils.dateparse import parse_datetime
 import json 
-
+#from .tasks import mqtt_listener
 
 
 kategori_liste=["bebek verileri","bebek bilgisi","mesaj sayfasi"]
@@ -54,12 +54,7 @@ def babydetails(request,id):
     }
     return render(request,"details.html",data)
 
-def bebekVerileri(request):
-    data = sensorData.objects.all().order_by('-timestamp')[:10]  # Son 10 veriyi al
-    context = {
-        'sensor_data': data
-    }
-    return render(request, 'bebekVerileri.html', context)
+
 
 '''def ebeveyn_iletisim(request):
     data={
@@ -87,8 +82,8 @@ def sensorData_api(request):
             temperature=data['temperature'],
             humidity=data['humidity'],
             air_quality=data['air_quality'],
-            heart_rate=data['heart_rate'],
-            spo2=data['spo2'],
+            #heart_rate=data['heart_rate'],
+            #spo2=data['spo2'],
             rain_detected=data['rain_detected'],
             sound_level=data['sound_level']
 
@@ -97,7 +92,12 @@ def sensorData_api(request):
         return JsonResponse({'status':'success'},status=201) 
     return JsonResponse({'error':'invalid request'},status=400)
     
-
+def bebekVerileri(request):
+    data = sensorData.objects.all().order_by('-timestamp')[:10]  # Son 10 veriyi al
+    context = {
+        'sensor_data': data
+    }
+    return render(request, 'bebekVerileri.html', context)
 
 
 
